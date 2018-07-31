@@ -19,6 +19,7 @@ $(function () {
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
         url: 'server/php/'
+        // url: 'server/node/'
     });
 
     // Enable iframe cross-domain access via redirect option:
@@ -37,7 +38,7 @@ $(function () {
         // Demo settings:
         $('#fileupload').fileupload('option', {
             // url: '//jquery-file-upload.appspot.com/',
-            url:'http://172.16.100.19:8800/',
+            url:'http://172.16.100.20:8800/',
             // Enable image resizing, except for Android and Opera,
             // which actually support image resizing, but fail to
             // send Blob objects via XHR requests:
@@ -50,7 +51,7 @@ $(function () {
         if ($.support.cors) {
             $.ajax({
                 // url: '//jquery-file-upload.appspot.com/',
-                url:'http://172.16.100.19:8800/',
+                url:'http://172.16.100.20:8800/',
                 type: 'HEAD'
             }).fail(function () {
                 $('<div class="alert alert-danger"/>')
