@@ -49,7 +49,8 @@ $(function () {
         // Upload server status check for browsers with CORS support:
         if ($.support.cors) {
             $.ajax({
-                url: '//jquery-file-upload.appspot.com/',
+                // url: '//jquery-file-upload.appspot.com/',
+                url:'http://172.16.100.19:8800/',
                 type: 'HEAD'
             }).fail(function () {
                 $('<div class="alert alert-danger"/>')
