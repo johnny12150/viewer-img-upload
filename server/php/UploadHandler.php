@@ -44,11 +44,15 @@ class UploadHandler
         $this->response = array();
         $this->options = array(
             'script_url' => $this->get_full_url().'/'.$this->basename($this->get_server_var('SCRIPT_NAME')),
-            'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/files/',
+            // hint: 設定圖片儲存的位置
+//            'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/files/',
+//            'upload_url' => $this->get_full_url().'/files/',
+            'upload_dir' => '/var/www/files/',
             'upload_url' => $this->get_full_url().'/files/',
             'input_stream' => 'php://input',
             'user_dirs' => false,
             'mkdir_mode' => 0755,
+//            'param_name' => 'files',
             'param_name' => 'files',
             // Set the following option to 'POST', if your server does not support
             // DELETE requests. This is a parameter sent to the client:
@@ -147,6 +151,7 @@ class UploadHandler
                     'max_height' => 600
                 ),
 		*/
+                // hint: 設定thumbnail的檔案位置
                 'thumbnail' => array(
                     // Uncomment the following to use a defined directory for the thumbnails
                     // instead of a subdirectory based on the version identifier.
@@ -168,6 +173,7 @@ class UploadHandler
             ),
             'print_response' => true
         );
+
         if ($options) {
             $this->options = $options + $this->options;
         }

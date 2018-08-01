@@ -19,7 +19,6 @@ $(function () {
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
         url: 'server/php/'
-        // url: 'server/node/'
     });
 
     // Enable iframe cross-domain access via redirect option:
@@ -34,7 +33,7 @@ $(function () {
 
     console.log(window.location.hostname);
 
-    if (window.location.hostname === '172.16.100.20') {
+    if (window.location.hostname === '172.16.100.21') {
         // Demo settings:
         $('#fileupload').fileupload('option', {
             // url: '//jquery-file-upload.appspot.com/',
@@ -61,6 +60,8 @@ $(function () {
             });
         }
     } else {
+        console.log($('#fileupload').fileupload('option', 'url'));
+
         // Load existing files:
         $('#fileupload').addClass('fileupload-processing');
         $.ajax({
