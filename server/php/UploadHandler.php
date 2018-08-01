@@ -44,15 +44,19 @@ class UploadHandler
         $this->response = array();
         $this->options = array(
             'script_url' => $this->get_full_url().'/'.$this->basename($this->get_server_var('SCRIPT_NAME')),
+            // test:
+            //fail
+            // 嘗試把掛出去的volume media資料夾弄到server/php/files下
+            // 把upload dir 改成/files/media/
+//            'upload_dir' => '/var/www/files/',
+//            'upload_url' => 'http://172.16.100.20:8881/var/www/files/',
             // hint: 設定圖片儲存的位置
-//            'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')).'/files/',
-//            'upload_url' => $this->get_full_url().'/files/',
-            'upload_dir' => '/var/www/files/',
+            'upload_dir' => dirname($this->get_server_var('SCRIPT_FILENAME')) . '/files/',
             'upload_url' => $this->get_full_url().'/files/',
             'input_stream' => 'php://input',
             'user_dirs' => false,
             'mkdir_mode' => 0755,
-//            'param_name' => 'files',
+            // 回傳的json格式的最外層object key
             'param_name' => 'files',
             // Set the following option to 'POST', if your server does not support
             // DELETE requests. This is a parameter sent to the client:
