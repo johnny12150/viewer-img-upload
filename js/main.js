@@ -33,7 +33,7 @@ $(function () {
 
     console.log(window.location.hostname);
 
-    if (window.location.hostname === '172.16.100.21') {
+    if (window.location.hostname === '172.16.100.20') {
         // Demo settings:
         $('#fileupload').fileupload('option', {
             // url: '//jquery-file-upload.appspot.com/',

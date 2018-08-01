@@ -1321,6 +1321,7 @@ class UploadHandler
         $this->send_content_type_header();
     }
 
+    // 取得server上所有圖片的資訊
     public function get($print_response = true) {
         if ($print_response && $this->get_query_param('download')) {
             return $this->download();
