@@ -1150,6 +1150,7 @@ class UploadHandler
         return readfile($file_path);
     }
 
+    // hint: 回傳response的body, 直接用echo顯示的方式
     protected function body($str) {
         echo $str;
     }
@@ -1277,6 +1278,7 @@ class UploadHandler
             .implode(', ', $this->options['access_control_allow_headers']));
     }
 
+    // hint: 產生response header
     public function generate_response($content, $print_response = true) {
         $this->response = $content;
         if ($print_response) {
@@ -1296,8 +1298,10 @@ class UploadHandler
                     ));
                 }
             }
+
             $this->body($json);
         }
+
         return $content;
     }
 
