@@ -33,24 +33,28 @@ $(function () {
 
     console.log(window.location.hostname);
 
-    if (window.location.hostname === '172.16.100.20') {
+    // if (window.location.hostname === '172.16.100.20') {
+    if (window.location.hostname === 'upload.yolo.dev.annotation.taieol.tw') {
+        var urls = ['http://172.16.100.20:8800/', 'upload.yolo.dev.annotation.taieol.tw'];
         // Demo settings:
         $('#fileupload').fileupload('option', {
             // url: '//jquery-file-upload.appspot.com/',
-            url:'http://172.16.100.20:8800/',
+            // url: 'http://172.16.100.20:8800/',
+            url: urls[1],
             // Enable image resizing, except for Android and Opera,
             // which actually support image resizing, but fail to
             // send Blob objects via XHR requests:
             disableImageResize: /Android(?!.*Chrome)|Opera/
                 .test(window.navigator.userAgent),
-            maxFileSize: 999000,
+            maxFileSize: 999000000,
             acceptFileTypes: /(\.|\/)(gif|jpe?g|png)$/i
         });
         // Upload server status check for browsers with CORS support:
         if ($.support.cors) {
             $.ajax({
                 // url: '//jquery-file-upload.appspot.com/',
-                url:'http://172.16.100.20:8800/',
+                // url: 'http://172.16.100.20:8800/',
+                url: urls[1],
                 type: 'HEAD'
             }).fail(function () {
                 $('<div class="alert alert-danger"/>')
