@@ -12,7 +12,6 @@
 
 class UploadHandler
 {
-
     protected $options;
 
     // PHP File Upload error message codes:
@@ -184,6 +183,7 @@ class UploadHandler
         if ($error_messages) {
             $this->error_messages = $error_messages + $this->error_messages;
         }
+        // 透過建構子觸發起始函式
         if ($initialize) {
             $this->initialize();
         }
