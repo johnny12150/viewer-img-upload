@@ -1,3 +1,6 @@
 .DS_Store
 *.pyc
 node_modules
+bower.json
+bower-version-update.js
+.jshintrc
