@@ -35,7 +35,7 @@ $(function () {
 
     // if (window.location.hostname === '172.16.100.20') {
     if (window.location.hostname === 'upload.yolo.dev.annotation.taieol.tw') {
-        var urls = ['http://172.16.100.20:8800/', 'upload.yolo.dev.annotation.taieol.tw'];
+        var urls = ['http://172.16.100.20:8800/', 'http://img-server.yolo.dev.annotation.taieol.tw'];
         // Demo settings:
         $('#fileupload').fileupload('option', {
             // url: '//jquery-file-upload.appspot.com/',
@@ -51,15 +51,26 @@ $(function () {
         });
         // Upload server status check for browsers with CORS support:
         if ($.support.cors) {
+            // 增加載入動畫
+            $('#fileupload').addClass('fileupload-processing');
             $.ajax({
                 // url: '//jquery-file-upload.appspot.com/',
                 // url: 'http://172.16.100.20:8800/',
                 url: urls[1],
-                type: 'HEAD'
+                // type: 'HEAD'
+                type: 'GET',
+                context: $('#fileupload')[0]
+            }).always(function () {
+                $(this).removeClass('fileupload-processing');
+            }).done(function (data) {
+                var data_obj = JSON.parse(data);
+                // document.getElementById("fileupload").innerHTML = tmpl("template-download", data_obj);
+                // 增加node.js顯示server上所有檔案的功能
+                $(this).fileupload('option', 'done')
+                    .call(this, $.Event('done'), {result: data_obj});
             }).fail(function () {
                 $('<div class="alert alert-danger"/>')
-                    .text('Upload server currently unavailable - ' +
-                            new Date())
+                    .text('Upload server currently unavailable - ' + new Date())
                     .appendTo('#fileupload');
             });
         }
@@ -75,6 +86,8 @@ $(function () {
             dataType: 'json',
             context: $('#fileupload')[0]
         }).always(function () {
+            console.log($(this));
+            console.log($('#fileupload')[0]);
             $(this).removeClass('fileupload-processing');
         }).done(function (result) {
             $(this).fileupload('option', 'done')
