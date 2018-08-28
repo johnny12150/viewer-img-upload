@@ -35,7 +35,9 @@ $(function () {
 
     // if (window.location.hostname === '172.16.100.20') {
     if (window.location.hostname === 'upload.yolo.dev.annotation.taieol.tw') {
+        // console.log(window.location.search, window.location.href);
         var urls = ['http://172.16.100.20:8800/', 'http://img-server.yolo.dev.annotation.taieol.tw'];
+        urls[1] = 'http://img-server.yolo.dev.annotation.taieol.tw' + window.location.search;
         // Demo settings:
         $('#fileupload').fileupload('option', {
             // url: '//jquery-file-upload.appspot.com/',
