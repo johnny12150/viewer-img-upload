@@ -14,11 +14,15 @@
 $(function () {
     'use strict';
 
+    var urls = ['http://172.16.100.20:8800/', 'http://192.168.1.32:30311'];
+    if (window.location.search)
+        urls[1] = urls[1] + window.location.search;
+
     // Initialize the jQuery File Upload widget:
     $('#fileupload').fileupload({
         // Uncomment the following to send cross-domain cookies:
         //xhrFields: {withCredentials: true},
-        url: 'server/php/'
+        url: urls[1]
     });
 
     // Enable iframe cross-domain access via redirect option:
@@ -33,11 +37,8 @@ $(function () {
 
     console.log(window.location.hostname);
 
-    // if (window.location.hostname === '172.16.100.20') {
-    if (window.location.hostname === 'upload.yolo.dev.annotation.taieol.tw') {
+    if (window.location.hostname === 'http://192.168.1.32:30655') {
         // console.log(window.location.search, window.location.href);
-        var urls = ['http://172.16.100.20:8800/', 'http://img-server.yolo.dev.annotation.taieol.tw'];
-        urls[1] = 'http://img-server.yolo.dev.annotation.taieol.tw' + window.location.search;
         // Demo settings:
         $('#fileupload').fileupload('option', {
             // url: '//jquery-file-upload.appspot.com/',
